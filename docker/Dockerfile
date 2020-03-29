@@ -5,12 +5,6 @@ RUN apt-get update \
     && apt-get clean \
     && pip install --upgrade pip
 
-WORKDIR /root/app/
-
-COPY requirements.txt .
-
-RUN pip install -r requirements.txt
-
 # TA-Lib installation
 RUN cd /tmp; \
 	wget http://sourceforge.net/projects/ta-lib/files/ta-lib/0.4.0/ta-lib-0.4.0-src.tar.gz; \
@@ -21,6 +15,10 @@ RUN cd /tmp; \
 	rm ta-lib-0.4.0-src.tar.gz; \
 	rm -rf ta-lib
 
-RUN pip install TA-Lib
+WORKDIR /root/app/
+
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
 
 ENTRYPOINT []

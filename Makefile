@@ -17,7 +17,7 @@ build:
 test:
 	@coverage run --rcfile=.config/setup.cfg -m pytest
 	@echo "\n$(BLUE)Coverage$(NC)\n"
-	@coverage report -m
+	@coverage report -m --rcfile=.config/setup.cfg
 	@echo "\n$(BLUE)Security check$(NC)\n"
 	@bandit -r --ini .config/setup.cfg
 

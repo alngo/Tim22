@@ -1,6 +1,6 @@
 class Tim22:
     def __init__(self):
-        pass
+        print("Tim22 init.")
 
     @staticmethod
     def run():

@@ -129,6 +129,5 @@ dmypy.json
 .pyre/
 
 # Misc
-.env
-.vim
-.swp
+*.vim
+*.swp

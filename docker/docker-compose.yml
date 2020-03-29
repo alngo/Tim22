@@ -9,7 +9,27 @@ services:
     volumes:
         - ..:/root/app/:cached
     entrypoint:
-        - "python -m ./tim22"
+        - "python -m /root/app/tim22"
+
+  tim22_watch:
+    build:
+        context: ..
+        dockerfile: "./docker/Dockerfile"
+    working_dir: /root/app
+    volumes:
+        - ..:/root/app/:cached
+    entrypoint:
+        - watchmedo auto-restart --recursive --pattern="*.py" --directory="." make test
+
+  tim22_test:
+    build:
+        context: ..
+        dockerfile: "./docker/Dockerfile"
+    working_dir: /root/app
+    volumes:
+        - ..:/root/app/:cached
+    entrypoint:
+        - make all_tests
 
   tim22_sh:
     build:

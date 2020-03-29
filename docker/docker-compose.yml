@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  tim22:
+    build:
+        context: ..
+        dockerfile: "./docker/Dockerfile"
+    working_dir: /root/app
+    volumes:
+        - ..:/root/app/:cached
+    entrypoint:
+        - "python -m ./tim22"
+
+  tim22_sh:
+    build:
+        context: ..
+        dockerfile: "./docker/Dockerfile"
+    working_dir: /root/app
+    volumes:
+        - ..:/root/app/:cached
+    entrypoint:
+        - "/bin/bash"

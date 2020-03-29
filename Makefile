@@ -27,7 +27,7 @@ all_tests:
 	@echo "\n$(BLUE)Pytest$(NC)\n"
 	@coverage run --rcfile=.config/setup.cfg -m pytest
 	@echo "\n$(BLUE)Coverage$(NC)\n"
-	@coverage report -m --rcfile=.config/setup.cfg
+	@coverage report --rcfile=.config/setup.cfg -m
 	@echo "\n$(BLUE)Security check$(NC)\n"
 	@bandit -r --ini .config/setup.cfg
 

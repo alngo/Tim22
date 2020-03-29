@@ -1,20 +1,12 @@
-services:
-  - docker
+services: docker
 
 language: python
 
-before_install:
- - cd /tmp
- - wget http://sourceforge.net/projects/ta-lib/files/ta-lib/0.4.0/ta-lib-0.4.0-src.tar.gz
- - tar -xzf ta-lib-0.4.0-src.tar.gz
- - cd ta-lib
- - ./configure --prefix=/usr; make; make install
- - cd ..
- - rm ta-lib-0.4.0-src.tar.gz
- - rm -rf ta-lib
-
 python:
   - "3.7"
+
+install:
+  - make build
 
 script:
   - make test

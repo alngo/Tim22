@@ -1,12 +1,15 @@
 services: docker
 
+env:
+    MODULE=tim22
+
 language: python
 
 python:
   - "3.7"
 
 install:
-  - make build
+  - docker-compose --file docker/docker-compose.prod.yml up --no-start --remove-orphans
 
 script:
-  - make test
+  - docker-compose --file docker/docker-compose.prod.yml run $MODULE_test

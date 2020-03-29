@@ -1,27 +1,27 @@
-MODULE := tim21
+MODULE := tim22
 
 BLUE=\033[0;34m
 NC=\033[0m # No Color
 
-.PHONY: run watch sh build rebuild test re clean
+.PHONY: run watch test sh build rebuild all_tests re clean
 
 run: build
-	docker-compose --file docker/docker-compose.yml run $(MODULE)
+	docker-compose --file docker/docker-compose.dev.yml run $(MODULE)
 
 sh: build
-	docker-compose --file docker/docker-compose.yml run $(MODULE)_sh
+	docker-compose --file docker/docker-compose.dev.yml run $(MODULE)_sh
 
 watch: build
-	docker-compose --file docker/docker-compose.yml run $(MODULE)_watch
+	docker-compose --file docker/docker-compose.dev.yml run $(MODULE)_watch
 
 test: build
-	docker-compose --file docker/docker-compose.yml run $(MODULE)_test
+	docker-compose --file docker/docker-compose.dev.yml run $(MODULE)_test
 
 build:
-	docker-compose --file docker/docker-compose.yml up --no-start --remove-orphans
+	docker-compose --file docker/docker-compose.dev.yml up --no-start --remove-orphans
 
 rebuild:
-	docker-compose --file docker/docker-compose.yml up --build --no-start --remove-orphans
+	docker-compose --file docker/docker-compose.dev.yml up --build --no-start --remove-orphans
 
 all_tests:
 	@echo "\n$(BLUE)Pytest$(NC)\n"

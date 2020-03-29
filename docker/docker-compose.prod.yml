@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  tim22:
+    build:
+        context: ..
+        dockerfile: "./docker/Dockerfile"
+    working_dir: /root/app
+    volumes:
+        - ..:/root/app/:cached
+    entrypoint:
+        - "python -m /root/app/tim22"
+
+  tim22_test:
+    build:
+        context: ..
+        dockerfile: "./docker/Dockerfile"
+    working_dir: /root/app
+    volumes:
+        - ..:/root/app/:cached
+    entrypoint:
+        - make all_tests

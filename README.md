@@ -1,4 +1,4 @@
-# Tim22
+# Tim22 [![Build Status](https://travis-ci.com/alngo/Tim22.svg?branch=master)](https://travis-ci.com/alngo/Tim22)
 
 Trading Robot
 

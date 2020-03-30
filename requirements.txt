@@ -7,3 +7,4 @@ pytest-mock==2.0.0
 pytest-socket==0.3.3
 TA-Lib==0.4.17
 watchdog==0.10.2
+argh==0.26.2

@@ -8,8 +8,7 @@ services:
     working_dir: /root/app
     volumes:
         - ..:/root/app/:cached
-    entrypoint:
-        - "python -m /root/app/tim22"
+    entrypoint: python -m /root/app/tim22
 
   tim22_test:
     build:
@@ -18,5 +17,4 @@ services:
     working_dir: /root/app
     volumes:
         - ..:/root/app/:cached
-    entrypoint:
-        - make all_tests
+    entrypoint: make all_tests

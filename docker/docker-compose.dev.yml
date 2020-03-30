@@ -8,8 +8,7 @@ services:
     working_dir: /root/app
     volumes:
         - ..:/root/app/:cached
-    entrypoint:
-        - "python -m /root/app/tim22"
+    entrypoint: python -m ./tim22
 
   tim22_watch:
     build:
@@ -18,8 +17,7 @@ services:
     working_dir: /root/app
     volumes:
         - ..:/root/app/:cached
-    entrypoint:
-        - watchmedo auto-restart --recursive --pattern="*.py" --directory="." make test
+    entrypoint: watchmedo auto-restart --recursive --pattern="*.py" --directory="." make all_tests
 
   tim22_test:
     build:
@@ -28,8 +26,7 @@ services:
     working_dir: /root/app
     volumes:
         - ..:/root/app/:cached
-    entrypoint:
-        - make all_tests
+    entrypoint: make all_tests
 
   tim22_sh:
     build:
@@ -38,5 +35,4 @@ services:
     working_dir: /root/app
     volumes:
         - ..:/root/app/:cached
-    entrypoint:
-        - "/bin/bash"
+    entrypoint: /bin/bash

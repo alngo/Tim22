@@ -31,8 +31,7 @@ all_tests:
 	@echo "\n$(BLUE)Security check$(NC)\n"
 	@bandit -r --ini .config/setup.cfg
 
-re: clean
-	rebuild
+re: clean rebuild
 
 clean:
 	rm -rf .pytest_cache .coverage .pytest_cache coverage.xml

@@ -1,1 +1,1 @@
-from .tim22 import Tim22  # noqa: F401
+import tim22

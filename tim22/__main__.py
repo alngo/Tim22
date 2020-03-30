@@ -1,8 +1,8 @@
-from .tim22 import Tim22
+import tim22
 
 
 def boot_tim22():
-    bot = Tim22()
+    bot = tim22.Tim22()
     bot.run()
 
 

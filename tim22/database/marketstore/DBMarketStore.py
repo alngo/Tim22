@@ -21,16 +21,16 @@ class DBMarketStore(DBMarket):
             )],
                 dtype=[
                 ('Epoch', 'i8'),
-                ('open', 'f4')
-                ('high', 'f4')
-                ('low', 'f4')
-                ('close', 'f4')
+                ('open', 'f4'),
+                ('high', 'f4'),
+                ('low', 'f4'),
+                ('close', 'f4'),
                 ('volume', 'i8')
             ])
             self.cli.write(data, f"{symbol}/{period}/OHLCV")
             return True
         except Exception as err:
-            print(err)
+            print(f"Error: {err}")
             return False
 
     def read_candlestick(self, symbol, period, start=None, end=None, limit=10):

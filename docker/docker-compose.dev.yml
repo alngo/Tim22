@@ -30,7 +30,8 @@ services:
         context: ..
         dockerfile: "./docker/Dockerfile"
     working_dir: /root/app
-    env_file: ../.config/.dev.env
+    environment:
+        - DB_ENDPOINT=http://dbmarket:5993/rpc
     depends_on:
         - dbmarket
     volumes:

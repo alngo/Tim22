@@ -9,7 +9,8 @@ python:
   - "3.7"
 
 install:
-  - docker-compose --file docker/docker-compose.prod.yml up --no-start --remove-orphans
+  - docker-compose --file docker/docker-compose.dev.yml up --no-start --remove-orphans tim22_test
+  - docker-compose --file docker/docker-compose.dev.yml up --no-start --remove-orphans dbmarket
 
 script:
-  - docker-compose --file docker/docker-compose.prod.yml run tim22_test
+  - docker-compose --file docker/docker-compose.dev.yml run tim22_test

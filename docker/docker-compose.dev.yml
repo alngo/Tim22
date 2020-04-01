@@ -6,6 +6,10 @@ services:
         context: ..
         dockerfile: "./docker/Dockerfile"
     working_dir: /root/app
+    environment:
+        - DB_ENDPOINT=http://dbmarket:5993/rpc
+    depends_on:
+        - dbmarket
     volumes:
         - ..:/root/app/:cached
     entrypoint: python ./tim22
@@ -15,6 +19,10 @@ services:
         context: ..
         dockerfile: "./docker/Dockerfile"
     working_dir: /root/app
+    environment:
+        - DB_ENDPOINT=http://dbmarket:5993/rpc
+    depends_on:
+        - dbmarket
     volumes:
         - ..:/root/app/:cached
     entrypoint: watchmedo auto-restart --recursive --pattern="*.py" --directory="." make all_tests
@@ -24,6 +32,10 @@ services:
         context: ..
         dockerfile: "./docker/Dockerfile"
     working_dir: /root/app
+    environment:
+        - DB_ENDPOINT=http://dbmarket:5993/rpc
+    depends_on:
+        - dbmarket
     volumes:
         - ..:/root/app/:cached
     entrypoint: make all_tests
@@ -33,6 +45,17 @@ services:
         context: ..
         dockerfile: "./docker/Dockerfile"
     working_dir: /root/app
+    environment:
+        - DB_ENDPOINT=http://dbmarket:5993/rpc
+    depends_on:
+        - dbmarket
     volumes:
         - ..:/root/app/:cached
     entrypoint: /bin/bash
+
+  dbmarket:
+    image: alpacamarkets/marketstore:latest
+    container_name: dbmarket
+    ports:
+      - 5993:5993
+

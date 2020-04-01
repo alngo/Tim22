@@ -21,15 +21,13 @@ class DBMarketStore(DBMarket):
             )],
                 dtype=[
                 ('Epoch', 'i8'),
-                ('Open', 'f4'),
-                ('High', 'f4'),
-                ('Low', 'f4'),
-                ('Close', 'f4'),
-                ('Volume', 'i8')
+                ('open', 'f4'),
+                ('high', 'f4'),
+                ('low', 'f4'),
+                ('close', 'f4'),
+                ('volume', 'i8')
             ])
-            resp = self.cli.write(data, f"{symbol}/{period}/OHLCV")
-            if resp["responses"] is not None:
-                raise Exception(resp["responses"][0]['error'])
+            self.cli.write(data, f"{symbol}/{period}/OHLCV")
             return True
         except Exception as err:
             print(f"Error: {err}")
@@ -41,4 +39,6 @@ class DBMarketStore(DBMarket):
         return reply.first().df()
 
     def list_symbols(self):
-        return self.cli.list_symbols()
+        res = self.cli.list_symbols()
+        print(res)
+        return []

@@ -4,7 +4,7 @@ from tests.context import DBMarket
 
 
 class TestDBMarket:
-    db = DBMarket("empty")
+    db = DBMarket("empty", 0000)
 
     def test_write_candlestick(self):
         now = datetime.now()

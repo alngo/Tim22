@@ -4,8 +4,8 @@ from ..DBMarket import DBMarket
 
 
 class DBMarketStore(DBMarket):
-    def __init__(self, endpoint):
-        super(DBMarketStore, self).__init__(endpoint)
+    def __init__(self, host, port, endpoint="http://localhost:5993/rpc"):
+        super(DBMarketStore, self).__init__(host, port)
         self.cli = pymkts.Client(f"{endpoint}")
 
     def write_candlestick(self, symbol, period,

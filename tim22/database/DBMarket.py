@@ -2,8 +2,9 @@ from abc import abstractmethod
 
 
 class DBMarket(object):
-    def __init__(self, endpoint):
-        self.endpoint = endpoint
+    def __init__(self, host, port):
+        self.host = host
+        self.port = port
 
     @abstractmethod
     def write_candlestick(self, symbol, epoch, open, high, low, close, volume):

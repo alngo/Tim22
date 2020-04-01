@@ -1,17 +1,6 @@
 version: '3'
 
 services:
-  tim22:
-    build:
-        context: ..
-        dockerfile: "./docker/Dockerfile"
-    working_dir: /root/app
-    depends_on:
-        - dbmarket
-    volumes:
-        - ..:/root/app/:cached
-    entrypoint: python ./tim22
-
   tim22_watch:
     build:
         context: ..
@@ -50,4 +39,3 @@ services:
     container_name: dbmarket
     ports:
       - 5993:5993
-    entrypoint: marketstore connect --url localhost:5993

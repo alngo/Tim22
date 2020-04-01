@@ -6,6 +6,7 @@ services:
         context: ..
         dockerfile: "./docker/Dockerfile"
     working_dir: /root/app
+    env_file: ../.config/.dev.env
     depends_on:
         - dbmarket
     volumes:
@@ -17,6 +18,7 @@ services:
         context: ..
         dockerfile: "./docker/Dockerfile"
     working_dir: /root/app
+    env_file: ../.config/.dev.env
     depends_on:
         - dbmarket
     volumes:
@@ -28,6 +30,7 @@ services:
         context: ..
         dockerfile: "./docker/Dockerfile"
     working_dir: /root/app
+    env_file: ../.config/.dev.env
     depends_on:
         - dbmarket
     volumes:
@@ -39,6 +42,7 @@ services:
         context: ..
         dockerfile: "./docker/Dockerfile"
     working_dir: /root/app
+    env_file: ../.config/.dev.env
     depends_on:
         - dbmarket
     volumes:
@@ -50,3 +54,4 @@ services:
     container_name: dbmarket
     ports:
       - 5993:5993
+

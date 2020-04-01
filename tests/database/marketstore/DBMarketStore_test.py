@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import pymarketstore as pymkts
 from datetime import datetime
@@ -52,8 +53,8 @@ class TestFakeDBMarketStore:
 class TestEndDBMarketStore:
     def test_init_DBMarketstore(self):
         db = DBMarketStore("dbmarket", 5993,
-                           endpoint="http://dbmarket:5993/rpc")
-        assert db.cli.endpoint == "http://dbmarket:5993/rpc"
+                           endpoint=os.getenv('DB_ENDPOINT'))
+        assert db.cli.endpoint == os.getenv('DB_ENDPOINT')
         assert db.host == "dbmarket"
         assert db.port == 5993
 
@@ -61,13 +62,13 @@ class TestEndDBMarketStore:
         now = datetime.now()
         timestamp = datetime.timestamp(now)
         db = DBMarketStore("dbmarket", 5993,
-                           endpoint="http://dbmarket:5993/rpc")
+                           endpoint=os.getenv('DB_ENDPOINT'))
         res = db.write_candlestick('EURUSD', '1Min', timestamp, 1, 2, 3, 4, 5)
         assert res is True
 
     def test_read_candlestick(self):
         db = DBMarketStore("dbmarket", 5993,
-                           endpoint="http://dbmarket:5993/rpc")
+                           endpoint=os.getenv('DB_ENDPOINT'))
         res = db.read_candlestick('EURUSD', '1Min', limit=10)
         assert isinstance(res, pd.DataFrame)
         assert res.iloc[0]["Open"] == 1.0
@@ -78,7 +79,7 @@ class TestEndDBMarketStore:
 
     def test_list_symbols(self):
         db = DBMarketStore("dbmarket", 5993,
-                           endpoint="http://dbmarket:5993/rpc")
+                           endpoint=os.getenv('DB_ENDPOINT'))
         res = db.list_symbols()
         assert isinstance(res, list)
         assert res[0] == "EURUSD"
